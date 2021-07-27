@@ -37,6 +37,7 @@ set(${APP_NAME}_HEADERS
   include/patternmatcher.h
   include/eventvector.h
   include/pattern.h
+  include/newpattern.h
 )
 
 set(${APP_NAME}_SRC_FILES
@@ -44,6 +45,7 @@ set(${APP_NAME}_SRC_FILES
   src/eventvector.cpp
   src/patternmatcher.cpp
   src/pattern.cpp
+  src/newpattern.cpp
   src/main.cpp
 )
 

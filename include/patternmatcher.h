@@ -16,11 +16,11 @@ public:
     PatternMatcher(int vectorDuration= 1000);
     void addPattern(Pattern* pattern);
     PatternsFound CalculatePatternWeights( Pattern pattern );
-
+    void spin();
 private:
-    void getWeightList(PatternEvent patternElement,std::vector<eventElement> PipeLine, std::vector<eventElement>& preElementList, std::vector<float>& totalWeightList);
-    std::vector<eventElement> returnAll(std::vector<eventElement> PipeLine, EventValues patternElementVal, int duration = -1, float timeStamp = -1, int direction = 2000);
-    std::vector<eventElement> returnAllNext(std::vector<eventElement> PipeLine, PatternEvent patternElement, int duration = -1, float timeStamp = -1, int direction = 2000);
+    void getWeightList(PatternEvent patternElement,std::vector<eventElement*> PipeLine, std::vector<eventElement*>& preElementList, std::vector<float>& totalWeightList);
+    std::vector<eventElement*> returnAll(std::vector<eventElement*> PipeLine, EventValues patternElementVal, long int duration = -1, long int = -1, int direction = 2);
+    std::vector<eventElement*> returnAllNext(std::vector<eventElement*> PipeLine, PatternEvent patternElement, long int duration = -1, long int = -1, int direction = 2);
 
     //eventVector* msgVector;
     std::vector<Pattern*> patternList;

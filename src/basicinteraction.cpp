@@ -44,6 +44,8 @@ void Basic::publishMsg(std::string name, std::vector<int> vals , std::vector<int
     newMsg.name = name;
     for (auto it = vals.begin();it!=vals.end();it++) newMsg.values.push_back(*it);
     for (auto it = perc.begin();it!=perc.end();it++) newMsg.percentage.push_back(*it);
+    long int ms = std::chrono::duration_cast< std::chrono::milliseconds >( std::chrono::system_clock::now().time_since_epoch() ).count();
+    newMsg.time = ms;
     this->interactionPub.publish(newMsg);
     if( printMsg ) std::cout<< name <<" "<<perc[0]<<std::endl;
 }

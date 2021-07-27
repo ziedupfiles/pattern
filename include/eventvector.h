@@ -22,10 +22,10 @@ class eventElement
 {
 public:
     eventElement();
-    eventElement(EventValues typ, float Time, float conf);
+    eventElement(EventValues typ, long int  Time, float conf);
 
     EventValues EventType;
-    float timeStamp;
+    long int  timeStamp;
     float confidence;
 
     // override to use it for sorting
@@ -50,13 +50,15 @@ class eventVector
 {
 public:
     //eventVector();
-    eventVector(int duration= 1000);
+    eventVector(int duration= 1000); // duration is the vector length from first to last ele, used to delete old elements
     void callBack(const vehicle_msgs::BasicInteraction& msg  );
-    void addElement(eventElement event);
-    void checkTime();
-    std::vector<eventElement> returnVector();
-    std::vector<eventElement> receivedElements;
+    void addElement(eventElement* event);
+    void checkTime(long int last);
+    std::vector<eventElement*> returnVector();
+    std::vector<eventElement*> receivedElements;
+    void spin();
 private:
+    std::vector<eventElement*> newreceivedElements;
     ros::NodeHandle n;
     ros::Subscriber eventSub;
     int vectorDuration;
